@@ -38,6 +38,7 @@ import {
 } from '../types/archive';
 import { calculateReadingStats } from '../utils/readingTime';
 import { QuizSection } from './QuizSection';
+import { PANGONG_PORTRAIT_SRC } from '../data/portraitImage';
 
 interface HomeSectionProps {
   archive: ArchiveData;
@@ -73,7 +74,7 @@ const FEATURED_PORTRAIT: PersonalMediaItem = {
   cameraMeta: 'iPhone 15 Pro Max · 35mm',
   caption: 'Cobalt water, sunlit terracotta mountains, and clear high-altitude air.',
   mediaType: 'photo',
-  src: 'assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG',
+  src: PANGONG_PORTRAIT_SRC,
   objectPosition: '50% 76%',
 };
 

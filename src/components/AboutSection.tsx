@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, ArrowUpRight } from 'lucide-react';
 import { ArchiveData, NavigationTab } from '../types/archive';
+import { PANGONG_PORTRAIT_SRC } from '../data/portraitImage';
 
 interface AboutSectionProps {
   archive: ArchiveData;
@@ -98,21 +99,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
             <div className="relative h-[370px] sm:h-[420px] rounded-xl overflow-hidden bg-[#10243E] border border-[var(--border-hairline)]">
               <img
-                src="assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG"
+                src={PANGONG_PORTRAIT_SRC}
                 alt="Vishvajeet Dhawale at Pangong Shore, Ladakh"
                 loading="lazy"
-                onError={(e) => {
-                  const img = e.currentTarget;
-                  if (!img.dataset.fallbackTried) {
-                    img.dataset.fallbackTried = '1';
-                    img.src =
-                      'public/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG';
-                  } else if (img.dataset.fallbackTried === '1') {
-                    img.dataset.fallbackTried = '2';
-                    img.src =
-                      '../public/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG';
-                  }
-                }}
                 style={{
                   objectPosition: '50% 72%',
                   imageOrientation: 'from-image',

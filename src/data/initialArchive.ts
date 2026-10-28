@@ -1,5 +1,6 @@
 import { ArchiveData } from '../types/archive';
 import { INITIAL_QUIZ_QUESTIONS, INITIAL_QUIZ_ROAST_BANDS } from './quizData';
+import { PANGONG_PORTRAIT_SRC } from './portraitImage';
 
 export const INITIAL_ARCHIVE_DATA: ArchiveData = {
   settings: {
@@ -934,7 +935,7 @@ export const INITIAL_ARCHIVE_DATA: ArchiveData = {
           'Standing between deep sapphire water and arid mountain ridges where the light feels impossibly sharp.',
         aspectRatio: '3:4',
         mediaType: 'photo',
-        mediaUrl: '/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG',
+        mediaUrl: PANGONG_PORTRAIT_SRC,
         isFeaturedOnHome: true,
         isSample: false,
       },

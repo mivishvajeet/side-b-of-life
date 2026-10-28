@@ -189,7 +189,7 @@ export default function App() {
 
   const [archive, setArchive] = useState<ArchiveData>(() => {
     try {
-      const cached = localStorage.getItem('vd_archive_cache_v16');
+      const cached = localStorage.getItem('vd_archive_cache_v17');
       if (cached) {
         return JSON.parse(cached);
       }
@@ -287,7 +287,7 @@ export default function App() {
           };
           setArchive(merged);
           try {
-            localStorage.setItem('vd_archive_cache_v16', JSON.stringify(merged));
+            localStorage.setItem('vd_archive_cache_v17', JSON.stringify(merged));
           } catch {
             // Ignore
           }
@@ -378,7 +378,7 @@ export default function App() {
     setArchive((prev) => {
       const next = updater(prev);
       try {
-        localStorage.setItem('vd_archive_cache_v16', JSON.stringify(next));
+        localStorage.setItem('vd_archive_cache_v17', JSON.stringify(next));
       } catch {
         // Ignore
       }
