@@ -39,6 +39,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if (window.location.hostname.endsWith('.github.io')) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './docs/assets/app.css';
+        document.head.appendChild(link);
+        var script = document.createElement('script');
+        script.type = 'module';
+        script.src = './docs/assets/app.js';
+        document.body.appendChild(script);
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

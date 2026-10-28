@@ -77,20 +77,34 @@ npm start
 
 ---
 
+## Live GitHub Pages Link (`/docs` Deployment)
+
+This repository includes a pre-built production static site in the **`/docs`** folder (`docs/index.html`, `docs/404.html`, `docs/.nojekyll`, and relative asset bundles) so it works immediately on **GitHub Pages** without requiring any CI/CD setup.
+
+### How to Enable Your GitHub Pages Link (30 Seconds):
+1. Push this repository to GitHub using the **GitHub** button in the top toolbar.
+2. Open your repository on GitHub and click **Settings** → **Pages** (in the left sidebar).
+3. Under **Build and deployment** → **Source**, select **Deploy from a branch**.
+4. Under **Branch**, choose **`main`**, select the **`/docs`** folder (instead of `/ (root)`), and click **Save**.
+5. Within 30–60 seconds, your live website will be published at:
+   ```text
+   https://<your-github-username>.github.io/<your-repo-name>/
+   ```
+
+---
+
 ## Pushing to Your GitHub Repository
 
-This workspace has already been initialized as a clean Git repository on the `main` branch with all files committed.
-
-To push directly to a new GitHub repository from your terminal (or using AI Studio's **Export to GitHub** button in the top toolbar):
+To push or update from a local terminal:
 
 ```bash
-# Option A: Using GitHub CLI (if installed on your machine)
-gh repo create vishvajeet-dhawale-archive --public --source=. --remote=origin --push
+# Rebuild the /docs GitHub Pages bundle after making code changes
+npm run build:pages
 
-# Option B: Using standard Git remote
-git remote add origin https://github.com/<your-github-username>/vishvajeet-dhawale-archive.git
-git branch -M main
-git push -u origin main
+# Push to GitHub
+git add .
+git commit -m "chore: update archive and rebuild GitHub Pages bundle"
+git push origin main
 ```
 
 ---

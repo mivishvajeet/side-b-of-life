@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build",
+    "build:pages": "GH_PAGES=true vite build --outDir docs && cp docs/index.html docs/404.html && touch docs/.nojekyll",
     "start": "tsx server.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",

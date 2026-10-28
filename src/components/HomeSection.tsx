@@ -73,7 +73,7 @@ const FEATURED_PORTRAIT: PersonalMediaItem = {
   cameraMeta: 'iPhone 15 Pro Max · 35mm',
   caption: 'Cobalt water, sunlit terracotta mountains, and clear high-altitude air.',
   mediaType: 'photo',
-  src: '/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG',
+  src: 'assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG',
   objectPosition: '50% 76%',
 };
 
@@ -728,6 +728,18 @@ export const HomeSection: React.FC<HomeSectionProps> = ({
                 <img
                   src={FEATURED_PORTRAIT.src}
                   alt={FEATURED_PORTRAIT.title}
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.dataset.fallbackTried) {
+                      img.dataset.fallbackTried = '1';
+                      img.src =
+                        'public/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG';
+                    } else if (img.dataset.fallbackTried === '1') {
+                      img.dataset.fallbackTried = '2';
+                      img.src =
+                        '../public/assets/aistudio/56B251D4-5A1B-4FEF-A335-0F3652A45C71_dbe9f31d.JPG';
+                    }
+                  }}
                   style={{
                     objectPosition: FEATURED_PORTRAIT.objectPosition,
                     imageOrientation: 'from-image',

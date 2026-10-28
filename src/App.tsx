@@ -395,7 +395,8 @@ export default function App() {
     setActiveTab(tab);
     setActivePostSlug(null);
     setMobileMenuOpen(false);
-    const url = tab === 'home' ? '/' : `/?section=${tab}`;
+    const basePath = window.location.pathname || '/';
+    const url = tab === 'home' ? basePath : `${basePath}?section=${tab}`;
     window.history.pushState({}, '', url);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -404,16 +405,18 @@ export default function App() {
     setActiveTab('writing');
     setActivePostSlug(slug);
     setMobileMenuOpen(false);
-    const url = `/?section=writing&post=${encodeURIComponent(slug)}`;
+    const basePath = window.location.pathname || '/';
+    const url = `${basePath}?section=writing&post=${encodeURIComponent(slug)}`;
     window.history.pushState({}, '', url);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const handleSelectPostSlug = useCallback((slug: string | null) => {
     setActivePostSlug(slug);
+    const basePath = window.location.pathname || '/';
     const url = slug
-      ? `/?section=writing&post=${encodeURIComponent(slug)}`
-      : '/?section=writing';
+      ? `${basePath}?section=writing&post=${encodeURIComponent(slug)}`
+      : `${basePath}?section=writing`;
     window.history.pushState({}, '', url);
   }, []);
 

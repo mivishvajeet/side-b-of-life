@@ -4,8 +4,20 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  const isGhPages = process.env.GH_PAGES === 'true';
   return {
+    base: './',
     plugins: [react(), tailwindcss()],
+    build: {
+      copyPublicDir: !isGhPages,
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/app.js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/app.[ext]',
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
