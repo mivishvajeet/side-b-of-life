@@ -1,0 +1,675 @@
+@import "tailwindcss";
+
+@layer base {
+  /* ============================================================================
+     5 COLOR-GRADED THEMES (INCLUDING NEW "KYOTO MONOGRAPH" UI/UX SHOWCASE THEME)
+     1. [data-palette="kyoto"] — "Kyoto Monograph & Vermilion Press" (NEW SHOWCASE)
+        Warm Japanese Washi paper (#F3EFE6), sunlit gallery cream (#FAF8F3),
+        International Vermilion stamp red (#C83E2B), Kyoto moss green (#1E4D3B),
+        deep Sumi ink (#141619) for AAA editorial contrast.
+     2. Default (:root / Stone) — "Himalayan Sandstone & Terracotta"
+        Warm sunlit shore stone (#F6F3EC), pure gallery ivory (#FDFCF9),
+        mountain terracotta accent (#B85D3B), deep lake slate (#1E3A5F)
+     3. [data-palette="budapest"] — "Budapest Ochre & Bordeaux"
+        Warm editorial parchment (#F8EFEA), alabaster (#FFFDFB),
+        deep bordeaux (#8C2D38), mountain ochre (#C67D3B)
+     4. [data-palette="fjord"] — "Pangong Lake Cobalt & Denim"
+        Crisp alpine mist (#EEF3F8), pure white (#FFFFFF),
+        Pangong sapphire cobalt (#1B5698), vintage denim slate (#345478)
+     5. .dark (Noir) — "Midnight Obsidian & Tungsten"
+        Deep carbon (#0C1016), slate card (#131922),
+        warm tungsten amber (#E59843), lake azure (#4C8EDA)
+     ============================================================================ */
+  :root {
+    --c-crimson: #B85D3B;
+    --c-amber: #C87D32;
+    --c-slate: #1E3A5F;
+    --c-olive: #234E52;
+    --c-pink: #8C3B4A;
+
+    --bg-canvas: #F5F2EB;
+    --bg-surface: #FDFCF9;
+    --bg-primary: #FDFCF9;
+    --bg-diner-olive: #ECE7DC;
+    --bg-elevated: #E5DECFE6;
+    --bg-ink-spread: #101D2E;
+    --bg-ink-card: #17283E;
+    --text-ink-spread: #F8FAFC;
+    --text-ink-muted: #9CB1C9;
+
+    --text-primary: #15191E;
+    --text-secondary: #424B57;
+    --text-muted: #646F7E;
+
+    --accent: #B85D3B;
+    --accent-hover: #9A4829;
+    --accent-crimson: #B85D3B;
+    --accent-mustard: #C87D32;
+    --accent-olive: #1E4E5D;
+    --accent-slate: #1E3A5F;
+    --accent-pink: #8C3B4A;
+    --accent-subtle: rgba(184, 93, 59, 0.08);
+
+    --border-hairline: rgba(21, 25, 30, 0.12);
+    --border-strong: rgba(21, 25, 30, 0.28);
+    --shadow-subtle: 0 1px 3px rgba(16, 24, 40, 0.04), 0 1px 2px rgba(16, 24, 40, 0.03);
+    --shadow-elevated: 0 12px 28px -6px rgba(16, 29, 46, 0.09), 0 4px 10px -2px rgba(16, 29, 46, 0.04);
+
+    --photo-filter: contrast(1.04) saturate(1.05) sepia(0.06);
+    --photo-tint: rgba(184, 93, 59, 0.05);
+    color-scheme: light;
+  }
+
+  html[data-palette="kyoto"]:not(.dark) {
+    --c-crimson: #C83E2B;
+    --c-amber: #B87324;
+    --c-slate: #1F364D;
+    --c-olive: #1E4D3B;
+    --c-pink: #9E3348;
+
+    --bg-canvas: #F3EFE6;
+    --bg-surface: #FAF8F3;
+    --bg-primary: #FAF8F3;
+    --bg-diner-olive: #EAE3D5;
+    --bg-elevated: #E2D9C8;
+    --bg-ink-spread: #14181F;
+    --bg-ink-card: #1C222B;
+    --text-ink-spread: #FAF8F3;
+    --text-ink-muted: #A3B1C2;
+
+    --text-primary: #141619;
+    --text-secondary: #3E4652;
+    --text-muted: #636D7A;
+
+    --accent: #C83E2B;
+    --accent-hover: #A62E1D;
+    --accent-crimson: #C83E2B;
+    --accent-mustard: #B87324;
+    --accent-olive: #1E4D3B;
+    --accent-slate: #1F364D;
+    --accent-pink: #9E3348;
+    --accent-subtle: rgba(200, 62, 43, 0.09);
+
+    --border-hairline: rgba(20, 22, 25, 0.13);
+    --border-strong: rgba(200, 62, 43, 0.36);
+    --shadow-subtle: 0 1px 3px rgba(20, 22, 25, 0.05), 0 1px 2px rgba(20, 22, 25, 0.03);
+    --shadow-elevated: 0 14px 30px -8px rgba(20, 22, 25, 0.1), 0 4px 10px -2px rgba(20, 22, 25, 0.05);
+
+    --photo-filter: contrast(1.06) saturate(1.06) sepia(0.04);
+    --photo-tint: rgba(200, 62, 43, 0.05);
+  }
+
+  html[data-palette="stoic"]:not(.dark) {
+    --c-crimson: #7C2D26;
+    --c-amber: #9C6B30;
+    --c-slate: #2C3539;
+    --c-olive: #3D5245;
+    --c-pink: #7A3E3E;
+
+    --bg-canvas: #E6DEC8;
+    --bg-surface: #F7F2E7;
+    --bg-primary: #F7F2E7;
+    --bg-diner-olive: #DDD2BC;
+    --bg-elevated: #D2C5AC;
+    --bg-ink-spread: #191614;
+    --bg-ink-card: #24201C;
+    --text-ink-spread: #F5EFE6;
+    --text-ink-muted: #B8ADA0;
+
+    --text-primary: #171412;
+    --text-secondary: #3F3933;
+    --text-muted: #685F56;
+
+    --accent: #7C2D26;
+    --accent-hover: #5E201A;
+    --accent-crimson: #7C2D26;
+    --accent-mustard: #9C6B30;
+    --accent-olive: #3D5245;
+    --accent-slate: #2C3539;
+    --accent-pink: #7A3E3E;
+    --accent-subtle: rgba(124, 45, 38, 0.1);
+
+    --border-hairline: rgba(24, 20, 18, 0.15);
+    --border-strong: rgba(124, 45, 38, 0.42);
+    --shadow-subtle: 0 1px 3px rgba(24, 20, 18, 0.07), 0 1px 2px rgba(24, 20, 18, 0.04);
+    --shadow-elevated: 0 16px 34px -8px rgba(24, 20, 18, 0.14), 0 4px 10px -2px rgba(24, 20, 18, 0.06);
+
+    --photo-filter: contrast(1.08) saturate(0.88) sepia(0.18);
+    --photo-tint: rgba(156, 107, 48, 0.09);
+  }
+
+  html[data-palette="stoic-obsidian"] {
+    --c-crimson: #D4AF37;
+    --c-amber: #C59B27;
+    --c-slate: #A39B8B;
+    --c-olive: #8A9A86;
+    --c-pink: #B85D4B;
+
+    --bg-canvas: #0D0B0A;
+    --bg-surface: #151210;
+    --bg-primary: #151210;
+    --bg-diner-olive: #1E1A16;
+    --bg-elevated: #28231E;
+    --bg-ink-spread: #0B0908;
+    --bg-ink-card: #1A1613;
+    --text-ink-spread: #F2ECE1;
+    --text-ink-muted: #A69C8E;
+
+    --text-primary: #EFE8DC;
+    --text-secondary: #BFB5A6;
+    --text-muted: #8C8274;
+
+    --accent: #D4AF37;
+    --accent-hover: #E5C158;
+    --accent-crimson: #D4AF37;
+    --accent-mustard: #C59B27;
+    --accent-olive: #8A9A86;
+    --accent-slate: #A39B8B;
+    --accent-pink: #B85D4B;
+    --accent-subtle: rgba(212, 175, 55, 0.14);
+
+    --border-hairline: rgba(212, 175, 55, 0.18);
+    --border-strong: rgba(212, 175, 55, 0.44);
+    --shadow-subtle: 0 2px 6px rgba(0, 0, 0, 0.45);
+    --shadow-elevated: 0 18px 40px -8px rgba(0, 0, 0, 0.65);
+
+    --photo-filter: contrast(1.12) saturate(0.82) sepia(0.22) brightness(0.92);
+    --photo-tint: rgba(212, 175, 55, 0.08);
+    color-scheme: dark;
+  }
+
+  html[data-palette="budapest"]:not(.dark) {
+    --c-crimson: #8C2D38;
+    --c-amber: #C67D3B;
+    --c-slate: #3A2434;
+    --c-olive: #56324B;
+    --c-pink: #9E3B4F;
+
+    --bg-canvas: #F7EFEA;
+    --bg-surface: #FFFDFB;
+    --bg-primary: #FFFDFB;
+    --bg-diner-olive: #EFE2DA;
+    --bg-elevated: #E6D5CB;
+    --bg-ink-spread: #261621;
+    --bg-ink-card: #341F2D;
+    --text-ink-spread: #FDF7F4;
+    --text-ink-muted: #CFB2BE;
+
+    --text-primary: #23141B;
+    --text-secondary: #523843;
+    --text-muted: #7A5B68;
+
+    --accent: #8C2D38;
+    --accent-hover: #6E1F29;
+    --accent-crimson: #8C2D38;
+    --accent-mustard: #C67D3B;
+    --accent-olive: #56324B;
+    --accent-slate: #3A2434;
+    --border-hairline: rgba(35, 20, 27, 0.12);
+    --border-strong: rgba(140, 45, 56, 0.32);
+    --shadow-subtle: 0 1px 3px rgba(35, 20, 27, 0.05);
+    --shadow-elevated: 0 10px 26px -6px rgba(58, 36, 52, 0.09);
+
+    --photo-filter: contrast(1.05) saturate(1.02) sepia(0.14) hue-rotate(-4deg);
+    --photo-tint: rgba(198, 125, 59, 0.08);
+  }
+
+  html[data-palette="fjord"]:not(.dark) {
+    --c-crimson: #1B5698;
+    --c-amber: #C27D4E;
+    --c-slate: #10243E;
+    --c-olive: #1E4E68;
+    --c-pink: #2A64A6;
+
+    --bg-canvas: #EEF3F8;
+    --bg-surface: #FFFFFF;
+    --bg-primary: #FFFFFF;
+    --bg-diner-olive: #E2ECF5;
+    --bg-elevated: #D5E3F0;
+    --bg-ink-spread: #0D1E33;
+    --bg-ink-card: #152C47;
+    --text-ink-spread: #F8FAFC;
+    --text-ink-muted: #98B2CC;
+
+    --text-primary: #0F1D2E;
+    --text-secondary: #354960;
+    --text-muted: #5C718A;
+
+    --accent: #1B5698;
+    --accent-hover: #133E70;
+    --accent-crimson: #1B5698;
+    --accent-mustard: #C27D4E;
+    --accent-olive: #1E4E68;
+    --accent-slate: #10243E;
+    --border-hairline: rgba(15, 29, 46, 0.12);
+    --border-strong: rgba(27, 86, 152, 0.34);
+    --shadow-subtle: 0 1px 3px rgba(15, 29, 46, 0.05);
+    --shadow-elevated: 0 10px 26px -6px rgba(15, 29, 46, 0.08);
+
+    --photo-filter: contrast(1.06) saturate(1.1) brightness(1.01);
+    --photo-tint: rgba(27, 86, 152, 0.05);
+  }
+
+  .dark {
+    --c-crimson: #E07A5F;
+    --c-amber: #E59843;
+    --c-slate: #94A3B8;
+    --c-olive: #569CD6;
+    --c-pink: #D9778B;
+
+    --bg-canvas: #0C1016;
+    --bg-surface: #131922;
+    --bg-primary: #131922;
+    --bg-diner-olive: #1A222E;
+    --bg-elevated: #222C3B;
+    --bg-ink-spread: #0E1520;
+    --bg-ink-card: #162030;
+    --text-ink-spread: #F3F6FA;
+    --text-ink-muted: #8FA3B8;
+
+    --text-primary: #F1F5F9;
+    --text-secondary: #A3B3C6;
+    --text-muted: #75869C;
+
+    --accent: #E07A5F;
+    --accent-hover: #EC8E75;
+    --accent-crimson: #E07A5F;
+    --accent-mustard: #E59843;
+    --accent-olive: #569CD6;
+    --accent-slate: #94A3B8;
+    --accent-pink: #D9778B;
+    --accent-subtle: rgba(224, 122, 95, 0.14);
+
+    --border-hairline: rgba(241, 245, 249, 0.12);
+    --border-strong: rgba(241, 245, 249, 0.26);
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-elevated: 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+
+    --photo-filter: contrast(1.08) saturate(0.96) brightness(0.95);
+    --photo-tint: rgba(12, 16, 22, 0.12);
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    transition:
+      background-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    transition: background-color 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+      transition: none;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Preserved Font Combination + Distinctive Marathi Literary Devanagari Stack:
+   1. Fraunces + Tiro Devanagari Marathi — Expressive Editorial & Marathi Sahitya Serif
+   2. Rozha One / Yatra One — High-Contrast & Calligraphic Marathi Display
+   3. Outfit + Noto Serif Devanagari — Clean Body & UI
+   4. IBM Plex Mono — Archival Monospace
+*/
+.font-serif-editorial,
+.font-literary {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", "Noto Serif Devanagari", Georgia, serif;
+  letter-spacing: -0.012em;
+}
+
+.font-marathi-granth {
+  font-family: "Tiro Devanagari Marathi", "Noto Serif Devanagari", "Fraunces", Georgia, serif;
+}
+
+.font-marathi-eczar {
+  font-family: "Eczar", "Tiro Devanagari Marathi", Georgia, serif;
+}
+
+.font-marathi-mudran {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", Georgia, serif;
+}
+
+.font-marathi-display {
+  font-family: "Rozha One", "Tiro Devanagari Marathi", "Fraunces", Georgia, serif;
+}
+
+.font-marathi-yatra {
+  font-family: "Yatra One", "Tiro Devanagari Marathi", Georgia, serif;
+}
+
+.font-marathi-kalam {
+  font-family: "Kalam", "Tiro Devanagari Marathi", cursive, serif;
+}
+
+.font-marathi-mukta {
+  font-family: "Mukta", "Outfit", sans-serif;
+}
+
+.font-display,
+.font-sans-body {
+  font-family: "Outfit", "Noto Serif Devanagari", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+/* Clean Minimalist Editorial Surfaces */
+.diner-booth-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  box-shadow: var(--shadow-subtle);
+  transition:
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tactile-card-shadow {
+  box-shadow: var(--shadow-subtle);
+  transition:
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tactile-card-shadow:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Portrait Color Grading Filters */
+.portrait-theme-grade {
+  filter: var(--photo-filter);
+  transition: filter 320ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portrait-lut-kodak {
+  filter: contrast(1.06) saturate(1.08) sepia(0.15) hue-rotate(-4deg);
+}
+
+.portrait-lut-fjord {
+  filter: contrast(1.08) saturate(1.14) hue-rotate(4deg);
+}
+
+.portrait-lut-mono {
+  filter: grayscale(1) contrast(1.16) brightness(1.02);
+}
+
+/* Magazine Dot Leader */
+.dot-leader {
+  background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1px);
+  background-position: bottom;
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Minimal Link Arrow Glide */
+.editorial-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.editorial-arrow-link .arrow-glyph {
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.editorial-arrow-link:hover .arrow-glyph,
+.group:hover .arrow-glyph {
+  transform: translateX(3px);
+}
+
+/* Page Transition */
+@keyframes filmDissolve {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.film-cut-enter {
+  animation: filmDissolve 240ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Kitchen Steam Wisp Keyframes */
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scaleX(0.95);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translateY(-3px) scaleX(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scaleX(0.92);
+  }
+}
+
+.steam-wisp-1 {
+  animation: steamRise 2.8s ease-in-out infinite;
+}
+.steam-wisp-2 {
+  animation: steamRise 2.8s ease-in-out 0.9s infinite;
+}
+.steam-wisp-3 {
+  animation: steamRise 2.8s ease-in-out 1.8s infinite;
+}
+
+/* Turntable Slow Spin */
+@keyframes vinylSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-spin-slow {
+  animation: vinylSpin 16s linear infinite;
+}
+
+/* Editorial Drop Cap for long-form essays */
+.editorial-drop-cap::first-letter {
+  font-family: "Fraunces", Georgia, serif;
+  float: left;
+  font-size: 3.3rem;
+  line-height: 0.85;
+  padding-right: 0.65rem;
+  padding-top: 0.15rem;
+  color: var(--accent-crimson);
+  font-weight: 500;
+}
+
+/* Calibrated Fluid Editorial Typographic Scale (Mobile & Desktop) */
+.editorial-hero-display {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-size: clamp(2.05rem, 3.8vw + 0.55rem, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.editorial-section-heading {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-size: clamp(1.55rem, 2.4vw + 0.5rem, 2.25rem);
+  line-height: 1.14;
+  letter-spacing: -0.016em;
+  text-wrap: balance;
+}
+
+.editorial-sub-heading {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-size: clamp(1.28rem, 1.5vw + 0.65rem, 1.68rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.editorial-card-heading {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-size: clamp(1.15rem, 1vw + 0.82rem, 1.38rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.editorial-lead {
+  font-size: clamp(1.02rem, 0.55vw + 0.88rem, 1.2rem);
+  line-height: 1.72;
+}
+
+.editorial-body {
+  font-size: clamp(0.95rem, 0.35vw + 0.86rem, 1.08rem);
+  line-height: 1.8;
+}
+
+.editorial-body-sm {
+  font-size: clamp(0.885rem, 0.25vw + 0.82rem, 0.965rem);
+  line-height: 1.68;
+}
+
+.editorial-quote {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-size: clamp(1.06rem, 0.85vw + 0.84rem, 1.32rem);
+  line-height: 1.6;
+}
+
+/* Hide scrollbars cleanly on horizontal mobile strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================================
+   MUSIC SANCTUARY MODE — TYPOGRAPHY & MINIMALIST ACOUSTIC TEXTURES
+   Distinct from Kyoto (warm Washi + vermilion) & Stoic (parchment/obsidian + gold).
+   Inspired by ECM Records Munich liner notes, Abbey Road acoustic baffles,
+   and brushed champagne-brass / slate studio consoles.
+   ============================================================================ */
+.music-sanctuary-mode {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Subtle vertical acoustic studio baffle slats + radial vinyl micro-groove watermark */
+.music-sanctuary-texture-dark {
+  background-image:
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(200, 157, 84, 0.08) 0%,
+      rgba(61, 153, 130, 0.04) 28%,
+      transparent 62%
+    ),
+    repeating-radial-gradient(
+      circle at 88% 14%,
+      rgba(243, 241, 236, 0.022) 0px,
+      rgba(243, 241, 236, 0.022) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(243, 241, 236, 0.018) 0px,
+      rgba(243, 241, 236, 0.018) 1px,
+      transparent 1px,
+      transparent 32px
+    );
+}
+
+.music-sanctuary-texture-light {
+  background-image:
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(31, 90, 110, 0.07) 0%,
+      rgba(184, 82, 56, 0.04) 28%,
+      transparent 62%
+    ),
+    repeating-radial-gradient(
+      circle at 88% 14%,
+      rgba(20, 25, 32, 0.025) 0px,
+      rgba(20, 25, 32, 0.025) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(20, 25, 32, 0.02) 0px,
+      rgba(20, 25, 32, 0.02) 1px,
+      transparent 1px,
+      transparent 32px
+    );
+}
+
+/* Music Sanctuary Liner-Note Typography Adjustments */
+.music-sanctuary-mode .editorial-hero-display {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-variation-settings: "opsz" 72, "SOFT" 20;
+  letter-spacing: -0.028em;
+  line-height: 1.05;
+}
+
+.music-sanctuary-mode .editorial-section-heading {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  font-variation-settings: "opsz" 48, "SOFT" 25;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+}
+
+.music-sanctuary-mode .editorial-sub-heading {
+  font-family: "Fraunces", "Tiro Devanagari Marathi", Georgia, serif;
+  letter-spacing: -0.016em;
+  line-height: 1.18;
+}
+
+.music-sanctuary-mode .editorial-body {
+  line-height: 1.86;
+  letter-spacing: 0.004em;
+}
+
+.music-sanctuary-mode .font-mono-meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.075em;
+}
+
+/* Subtle perforated acoustic card surface inside Music Sanctuary */
+.music-sanctuary-card-surface {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 0
+  );
+  background-size: 16px 16px;
+}
+
+
+

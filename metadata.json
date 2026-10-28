@@ -1,0 +1,6 @@
+{
+  "name": "Vishvajeet Dhawale — Personal Archive of Curiosity",
+  "description": "A personal journal, film notebook, reading log, and archive of thoughts on cinema, football, books, photography, technology, and Stoic questioning by Vishvajeet Dhawale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
