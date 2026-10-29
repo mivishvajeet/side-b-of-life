@@ -2,6 +2,7 @@ export type NavigationTab =
   | 'home'
   | 'about'
   | 'interests'
+  | 'work'
   | 'cinema'
   | 'football'
   | 'books'

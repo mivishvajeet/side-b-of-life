@@ -22,6 +22,7 @@ import {
   SlidersHorizontal,
   Menu,
   X,
+  Database,
 } from 'lucide-react';
 import { ArchiveData, NavigationTab } from './types/archive';
 import { INITIAL_ARCHIVE_DATA } from './data/initialArchive';
@@ -39,6 +40,7 @@ import { TechnologySection } from './components/TechnologySection';
 import { BlogSection } from './components/BlogSection';
 import { QuizSection } from './components/QuizSection';
 import { ContactSection } from './components/ContactSection';
+import { WorkSection } from './components/WorkSection';
 import {
   GlobalStoicThemeBanner,
   StoicAtmosphereMode,
@@ -50,6 +52,7 @@ const VALID_TABS: NavigationTab[] = [
   'home',
   'about',
   'interests',
+  'work',
   'cinema',
   'football',
   'books',
@@ -321,8 +324,13 @@ export default function App() {
       },
       interests: {
         title: 'Interests — Vishvajeet Dhawale',
-        desc: 'Five areas of curiosity: Cinema, Football, Books, Photography, and Technology.',
+        desc: 'Curiosities and work: Data Engineering, Cinema, Football, Books, Philosophy, and Music.',
         path: '/?section=interests',
+      },
+      work: {
+        title: 'Vishvajeet V Dhawale — Data Engineer & Data Analyst Portfolio',
+        desc: 'Data Engineering & Data Analytics portfolio of Vishvajeet V Dhawale: ETL/ELT pipelines, Apache Spark, Airflow, dbt, SQL warehouse modeling, day-to-day engineering workflow, and GitHub projects.',
+        path: '/?section=work',
       },
       cinema: {
         title: 'Cinema & Frame Studies — Vishvajeet Dhawale',
@@ -437,10 +445,12 @@ export default function App() {
     num: string;
     label: string;
     Icon: React.ComponentType<{ className?: string }>;
+    opensNewTab?: boolean;
   }[] = [
     { id: 'about', num: '01', label: 'Story', Icon: User },
     { id: 'interests', num: '02', label: 'Curiosities', Icon: Layers },
-    { id: 'contact', num: '03', label: 'Contact', Icon: Mail },
+    { id: 'work', num: '03', label: 'Work', Icon: Database, opensNewTab: true },
+    { id: 'contact', num: '04', label: 'Contact', Icon: Mail },
   ];
 
   const curiositySubTabs: {
@@ -491,6 +501,10 @@ export default function App() {
     { id: 'music', label: 'Music', Icon: Disc3 },
     { id: 'contact', label: 'Contact', Icon: Mail },
   ];
+
+  if (activeTab === 'work') {
+    return <WorkSection onNavigate={handleNavigate} isStandaloneWindow={true} />;
+  }
 
   return (
     <div className="min-h-screen text-[var(--text-primary)] selection:bg-[var(--accent-crimson)] selection:text-white p-2 sm:p-4 md:p-6 pb-20 md:pb-6">
@@ -622,14 +636,25 @@ export default function App() {
           >
             {navItems.map((item) => {
               const isActive =
-                activeTab === item.id ||
-                (item.id === 'interests' && isCuriositySection);
+                !item.opensNewTab &&
+                (activeTab === item.id ||
+                  (item.id === 'interests' && isCuriositySection));
               const Icon = item.Icon;
               return (
                 <a
                   key={item.id}
-                  href={`/?section=${item.id}`}
+                  href={
+                    item.opensNewTab
+                      ? '/?section=work'
+                      : `/?section=${item.id}`
+                  }
+                  target={item.opensNewTab ? '_blank' : undefined}
+                  rel={item.opensNewTab ? 'noopener noreferrer' : undefined}
                   onClick={(e) => {
+                    if (item.opensNewTab) {
+                      // Open exclusively in a new window/tab without switching the personal portfolio view
+                      return;
+                    }
                     e.preventDefault();
                     handleNavigate(item.id);
                   }}
@@ -645,6 +670,9 @@ export default function App() {
                     }`}
                   />
                   <span className="font-display">{item.label}</span>
+                  {item.opensNewTab && (
+                    <ArrowUpRight className="w-3 h-3 opacity-75" />
+                  )}
                 </a>
               );
             })}
@@ -816,6 +844,19 @@ export default function App() {
                   );
                 })}
               </div>
+              <a
+                href="/?section=work"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="min-h-[42px] w-full py-2 px-3 rounded-xl flex items-center justify-between gap-2 border border-[var(--border-hairline)] bg-[var(--bg-canvas)] text-xs font-medium text-[var(--text-primary)]"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <Database className="w-3.5 h-3.5 text-[var(--accent-crimson)] shrink-0" />
+                  <span>Work · Data Engineer Portfolio</span>
+                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[var(--accent-crimson)] shrink-0" />
+              </a>
             </motion.nav>
           )}
         </AnimatePresence>
