@@ -651,11 +651,9 @@ export default function App() {
                   target={item.opensNewTab ? '_blank' : undefined}
                   rel={item.opensNewTab ? 'noopener noreferrer' : undefined}
                   onClick={(e) => {
-                    if (item.opensNewTab) {
-                      // Open exclusively in a new window/tab without switching the personal portfolio view
-                      return;
+                    if (!item.opensNewTab) {
+                      e.preventDefault();
                     }
-                    e.preventDefault();
                     handleNavigate(item.id);
                   }}
                   className={`px-3.5 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
@@ -848,7 +846,7 @@ export default function App() {
                 href="/?section=work"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => handleNavigate('work')}
                 className="min-h-[42px] w-full py-2 px-3 rounded-xl flex items-center justify-between gap-2 border border-[var(--border-hairline)] bg-[var(--bg-canvas)] text-xs font-medium text-[var(--text-primary)]"
               >
                 <span className="inline-flex items-center gap-2">
