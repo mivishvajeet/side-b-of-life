@@ -745,6 +745,153 @@ const HARD_ENGINEERING_CHALLENGES = [
   },
 ];
 
+interface ProjectEvolutionMilestone {
+  id: string;
+  linkedProjectId: string;
+  yearBadge: string;
+  period: string;
+  yearGroup: 'Year 1' | 'Year 2' | 'Year 3+';
+  roleStage: string;
+  projectTitle: string;
+  architectureShift: string;
+  summary: string;
+  milestones: string[];
+  technologies: string[];
+  impactMetrics: { label: string; value: string }[];
+  githubUrl: string;
+}
+
+const PROJECT_EVOLUTION_TIMELINE: ProjectEvolutionMilestone[] = [
+  {
+    id: 'timeline-y1',
+    linkedProjectId: 'de-3yoe-4',
+    yearBadge: 'YEAR 01 · FOUNDATION',
+    period: '2023 – Early 2024',
+    yearGroup: 'Year 1',
+    roleStage: 'Data Analyst & SQL BI Developer',
+    projectTitle: 'Customer Retention Cohort, Funnel & Revenue Attribution Analytics',
+    architectureShift: 'Manual CSV/Excel Stitching → Modular SQL Window Models & Automated BI Marts',
+    summary:
+      'Started by solving executive reporting bottlenecks—replacing 6+ hours/week of error-prone spreadsheet work with reusable SQL window-function cohort models, Python statistical profiling, and interactive Power BI / Tableau dashboards.',
+    milestones: [
+      'Designed M0–M12 customer retention cohort matrices and repeat-purchase LTV attribution queries using SQL CTEs and window functions.',
+      'Used Python (Pandas, NumPy) to run segment variance analysis across mobile/web onboarding steps, isolating a 38% conversion drop-off.',
+      'Published governed Power BI & Tableau executive dashboards with automated weekly refresh schedules.',
+    ],
+    technologies: [
+      'SQL (Window Functions, CTEs)',
+      'Python (Pandas, NumPy)',
+      'PostgreSQL',
+      'Power BI',
+      'Tableau',
+      'Dimensional Marts',
+    ],
+    impactMetrics: [
+      { label: 'Funnel Bottleneck Isolated', value: '38% Drop-Off' },
+      { label: 'Manual Excel Work Eliminated', value: '6+ Hrs/Week' },
+      { label: 'Cohort Coverage', value: 'M0–M12 Matrix' },
+    ],
+    githubUrl: 'https://github.com/vishvajeetdhawale/customer-cohort-retention-analytics',
+  },
+  {
+    id: 'timeline-y2a',
+    linkedProjectId: 'de-3yoe-3',
+    yearBadge: 'YEAR 02 · WAREHOUSE OPTIMIZATION',
+    period: 'Mid 2024',
+    yearGroup: 'Year 2',
+    roleStage: 'Analytics Engineer & SQL Performance Specialist',
+    projectTitle: 'Enterprise SQL Warehouse Tuning & Unified KPI Semantic Layer',
+    architectureShift: '500+ Line Ad-Hoc Queries → Partitioned Rollups & Governed dbt Semantic Views',
+    summary:
+      'Evolved from building individual dashboards to re-architecting the underlying cloud data warehouse—auditing query execution plans, introducing date partitioning and clustering keys, and unifying conflicting department KPIs.',
+    milestones: [
+      'Audited Snowflake/BigQuery query execution plans to eliminate redundant full-table scans, correlated subqueries, and unindexed string joins.',
+      'Standardized Net Revenue, Rolling 30-Day Active Users, and SLA metrics into version-controlled dbt semantic views across Finance, Ops, and Product.',
+      'Built pre-aggregated daily and monthly rollup tables with composite clustering keys for sub-4-second BI loads.',
+    ],
+    technologies: [
+      'Advanced SQL',
+      'Query Plan Optimization',
+      'dbt',
+      'Snowflake',
+      'Google BigQuery',
+      'Partitioning & Clustering',
+      'Power BI',
+    ],
+    impactMetrics: [
+      { label: 'BI Query Latency', value: '42s → 3.1s (-92%)' },
+      { label: 'Full-Table Scan Volume', value: '-70% Compute' },
+      { label: 'Metric Alignment', value: '3 Core Teams Unified' },
+    ],
+    githubUrl: 'https://github.com/vishvajeetdhawale/sql-warehouse-kpi-semantic-layer',
+  },
+  {
+    id: 'timeline-y2b',
+    linkedProjectId: 'de-3yoe-1',
+    yearBadge: 'YEAR 02–03 · MEDALLION LAKEHOUSE',
+    period: 'Late 2024 – 2025',
+    yearGroup: 'Year 2',
+    roleStage: 'Data Engineer — Orchestration & Warehouse Architecture',
+    projectTitle: 'Production Medallion Lakehouse & Incremental ELT Pipeline',
+    architectureShift: 'Fragile Overnight Full Dumps → Airflow DAGs + S3 Parquet + dbt Incremental MERGE',
+    summary:
+      'Took ownership of end-to-end pipeline engineering—replacing brittle full-table cron dumps with an orchestrated Bronze → Silver → Gold Medallion lakehouse across 35+ source tables (12M+ rows/day).',
+    milestones: [
+      'Engineered idempotent Python extraction tasks in Apache Airflow with high-watermark state tracking, retries, and Slack SLA alerts.',
+      'Implemented dbt incremental MERGE models with 48-hour late-arriving lookback windows and SCD Type 2 snapshots for historical accuracy.',
+      'Embedded 40+ automated dbt schema and reconciliation tests into GitHub Actions CI to block bad data before reaching Gold marts.',
+    ],
+    technologies: [
+      'Apache Airflow',
+      'dbt Core',
+      'Python (Boto3)',
+      'Snowflake / PostgreSQL',
+      'AWS S3 (Parquet)',
+      'SCD Type 2',
+      'Docker',
+      'GitHub Actions CI',
+    ],
+    impactMetrics: [
+      { label: 'Daily Pipeline Runtime', value: '115m → 41m (-64%)' },
+      { label: 'Warehouse Scan Cost', value: '-55% Cost' },
+      { label: 'Data Quality Gates', value: '40+ Automated Tests' },
+    ],
+    githubUrl: 'https://github.com/vishvajeetdhawale/medallion-elt-lakehouse-pipeline',
+  },
+  {
+    id: 'timeline-y3',
+    linkedProjectId: 'de-3yoe-2',
+    yearBadge: 'YEAR 03+ · DISTRIBUTED SCALE',
+    period: '2025 – Present',
+    yearGroup: 'Year 3+',
+    roleStage: 'Data Engineer — Distributed Spark & Streaming Systems',
+    projectTitle: 'Distributed Event Telemetry & PySpark Batch/Streaming Pipeline',
+    architectureShift: 'Batch Relational Tables → Kafka Streams + PySpark Watermarks & Broadcast Tuning',
+    summary:
+      'Expanded into high-throughput distributed computing—architecting a fault-tolerant Kafka and PySpark Structured Streaming pipeline processing 15M+ daily JSON telemetry events with dead-letter quarantine and shuffle-skew optimization.',
+    milestones: [
+      'Built PySpark Structured Streaming consumers reading partitioned Kafka topics with strict StructType schema validation.',
+      'Routed malformed JSON records to a dedicated S3 Dead-Letter path for 100% payload recovery without halting streaming jobs.',
+      'Applied 15-minute event-time watermarks for late mobile telemetry and replaced sort-merge joins with broadcast joins.',
+    ],
+    technologies: [
+      'Apache Spark / PySpark',
+      'Apache Kafka',
+      'Spark SQL',
+      'Delta Lake / Parquet',
+      'AWS S3',
+      'Python',
+      'Structured Streaming',
+    ],
+    impactMetrics: [
+      { label: 'Daily Event Throughput', value: '15M+ Events/Day' },
+      { label: 'Spark Job Speedup', value: '3.4x Faster' },
+      { label: 'Pipeline Uptime & Audit', value: '99.9% SLA · 100% DLQ' },
+    ],
+    githubUrl: 'https://github.com/vishvajeetdhawale/pyspark-event-telemetry-pipeline',
+  },
+];
+
 interface WorkSectionProps {
   onNavigate?: (tab: NavigationTab) => void;
   isStandaloneWindow?: boolean;
@@ -797,6 +944,12 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
   const [domainFilter, setDomainFilter] = useState<
     'All' | 'Data Engineering' | 'Analytics Engineering' | 'Data Analytics'
   >('All');
+  const [timelineYearFilter, setTimelineYearFilter] = useState<
+    'All' | 'Year 1' | 'Year 2' | 'Year 3+'
+  >('All');
+  const [timelineSortOrder, setTimelineSortOrder] = useState<'chronological' | 'latest-first'>(
+    'chronological'
+  );
   const [expandedCodeId, setExpandedCodeId] = useState<string | null>('de-3yoe-1');
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingGithub, setEditingGithub] = useState(false);
@@ -859,6 +1012,13 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
   const filteredProjects = projects.filter((p) =>
     domainFilter === 'All' ? true : p.domain === domainFilter
   );
+
+  const filteredTimeline = useMemo(() => {
+    const base = PROJECT_EVOLUTION_TIMELINE.filter((item) =>
+      timelineYearFilter === 'All' ? true : item.yearGroup === timelineYearFilter
+    );
+    return timelineSortOrder === 'latest-first' ? [...base].reverse() : base;
+  }, [timelineYearFilter, timelineSortOrder]);
 
   const activeBlueprintStage =
     MEDALLION_BLUEPRINT_STAGES.find((s) => s.id === activeBlueprintStageId) ||
@@ -1065,6 +1225,12 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
                 className={`${ui.textSecondary} hover:${ui.textPrimary} transition-colors`}
               >
                 Proficiency
+              </a>
+              <a
+                href="#evolution-timeline"
+                className={`${ui.textSecondary} hover:${ui.textPrimary} transition-colors`}
+              >
+                3-Year Timeline
               </a>
               <a
                 href="#projects"
@@ -1748,12 +1914,238 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
         </section>
 
         {/* -------------------------------------------------------------------
-            03. TECHNICAL STACK & ECOSYSTEM (3+ YEARS PRODUCTION FOCUS)
+            03. VERTICAL TIMELINE: 3-YEAR DATA ENGINEERING EVOLUTION (2023 → 2026)
+            ------------------------------------------------------------------- */}
+        <section id="evolution-timeline" className={`pt-12 border-t space-y-8 ${ui.hairline}`}>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+            <div className="space-y-1">
+              <div className={`text-xs font-mono font-semibold ${ui.accent}`}>
+                03. 3-YEAR PROJECT &amp; ARCHITECTURE EVOLUTION TIMELINE
+              </div>
+              <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${ui.textPrimary}`}>
+                Evolution of Data Engineering Projects (Year 1 → Year 3+)
+              </h2>
+              <p className={`text-xs sm:text-sm max-w-2xl ${ui.textSecondary}`}>
+                Tracing my progression over the last three years—from analytical SQL cohort modeling and BI automation to cloud warehouse tuning, orchestrated Airflow + dbt Medallion pipelines, and distributed PySpark event streaming.
+              </p>
+            </div>
+
+            {/* Interactive Controls: Filter by Year Phase + Toggle Chronological Order */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div
+                role="group"
+                aria-label="Filter timeline by year"
+                className={`inline-flex flex-wrap items-center p-1 rounded-lg border ${ui.cardSubtle}`}
+              >
+                {(['All', 'Year 1', 'Year 2', 'Year 3+'] as const).map((yr) => (
+                  <button
+                    key={yr}
+                    type="button"
+                    onClick={() => setTimelineYearFilter(yr)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-colors cursor-pointer ${
+                      timelineYearFilter === yr
+                        ? ui.btnPrimary
+                        : `${ui.textSecondary} hover:${ui.textPrimary}`
+                    }`}
+                  >
+                    {yr === 'All' ? 'All 3 Years' : yr}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setTimelineSortOrder((prev) =>
+                    prev === 'chronological' ? 'latest-first' : 'chronological'
+                  )
+                }
+                className={`px-3 py-2 rounded-lg text-xs font-mono inline-flex items-center gap-1.5 transition-colors cursor-pointer ${ui.btnSecondary}`}
+                title="Toggle chronological order"
+              >
+                <Clock className="w-3.5 h-3.5" />
+                <span>
+                  {timelineSortOrder === 'chronological' ? '2023 → Present' : 'Latest First'}
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Vertical Spine Timeline Container */}
+          <div className="relative pl-6 sm:pl-10 space-y-8">
+            {/* Continuous Vertical Structural Spine */}
+            <div
+              aria-hidden="true"
+              className={`absolute left-2.5 sm:left-4 top-2 bottom-2 w-0.5 ${
+                isLight ? 'bg-[#D5D3CA]' : 'bg-[#262A38]'
+              }`}
+            />
+
+            {filteredTimeline.map((item, idx) => (
+              <div key={item.id} className="relative group">
+                {/* Timeline Spine Node Marker */}
+                <div
+                  aria-hidden="true"
+                  className={`absolute -left-[22px] sm:-left-[30px] top-6 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-transform group-hover:scale-110 ${
+                    isLight
+                      ? 'bg-[#F8F7F4] border-[#0F766E]'
+                      : 'bg-[#0D0E12] border-[#F97316]'
+                  }`}
+                >
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      isLight ? 'bg-[#0F766E]' : 'bg-[#F97316]'
+                    }`}
+                  />
+                </div>
+
+                {/* Timeline Card */}
+                <div className={`rounded-xl border p-5 sm:p-7 space-y-5 ${ui.card}`}>
+                  {/* Top Header: Year Badge, Period, Role Progression & Links */}
+                  <div className="flex flex-wrap items-start justify-between gap-4 border-b pb-4 border-inherit">
+                    <div className="space-y-1.5">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+                        <span
+                          className={`px-2.5 py-0.5 rounded font-bold ${
+                            isLight
+                              ? 'bg-[#0F766E]/10 text-[#0F766E]'
+                              : 'bg-[#F97316]/15 text-[#F97316]'
+                          }`}
+                        >
+                          {item.yearBadge}
+                        </span>
+                        <span className={ui.textMuted} aria-hidden="true">
+                          ·
+                        </span>
+                        <span className={`font-semibold ${ui.textPrimary}`}>{item.period}</span>
+                        <span className={ui.textMuted} aria-hidden="true">
+                          ·
+                        </span>
+                        <span className={ui.accentWarm}>{item.roleStage}</span>
+                      </div>
+
+                      <h3 className={`text-xl sm:text-2xl font-bold tracking-tight ${ui.textPrimary}`}>
+                        {item.projectTitle}
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="#projects"
+                        onClick={() => {
+                          setDomainFilter('All');
+                          setExpandedCodeId(item.linkedProjectId);
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-mono inline-flex items-center gap-1.5 transition-colors ${ui.btnSecondary}`}
+                      >
+                        <Code2 className="w-3.5 h-3.5" />
+                        <span>Inspect Code &amp; Case Study</span>
+                      </a>
+
+                      <a
+                        href={item.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`px-3 py-1.5 rounded-lg text-xs font-mono inline-flex items-center gap-1.5 transition-colors ${ui.btnSecondary}`}
+                        title="Open GitHub Repository"
+                      >
+                        <GitBranch className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">GitHub</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Architectural Shift Banner */}
+                  <div
+                    className={`px-4 py-2.5 rounded-lg border flex flex-wrap items-center justify-between gap-2 text-xs font-mono ${ui.cardSubtle}`}
+                  >
+                    <span className={ui.textMuted}>ARCHITECTURE EVOLUTION:</span>
+                    <span className={`font-semibold ${ui.textPrimary}`}>
+                      {item.architectureShift}
+                    </span>
+                  </div>
+
+                  <p className={`text-sm sm:text-base leading-relaxed ${ui.textSecondary}`}>
+                    {item.summary}
+                  </p>
+
+                  {/* Two-Column Grid: Key Engineering Milestones vs Quantified Impact & Tech Stack */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    {/* Left 7 Cols: Key Milestones */}
+                    <div className="lg:col-span-7 space-y-2.5">
+                      <h4
+                        className={`text-xs font-mono font-semibold uppercase tracking-wider ${ui.textMuted}`}
+                      >
+                        Key Engineering Milestones
+                      </h4>
+                      <ul className={`space-y-2 text-xs sm:text-sm leading-relaxed ${ui.textSecondary}`}>
+                        {item.milestones.map((milestone, mIdx) => (
+                          <li key={mIdx} className="flex items-start gap-2.5">
+                            <span className={`font-mono font-bold mt-0.5 ${ui.accent}`}>
+                              0{mIdx + 1}.
+                            </span>
+                            <span>{milestone}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Right 5 Cols: Quantified Impact Metrics & Technologies Used */}
+                    <div className="lg:col-span-5 space-y-4">
+                      <div className="space-y-2">
+                        <h4
+                          className={`text-xs font-mono font-semibold uppercase tracking-wider ${ui.textMuted}`}
+                        >
+                          Production Impact
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2">
+                          {item.impactMetrics.map((metric) => (
+                            <div
+                              key={metric.label}
+                              className={`px-3.5 py-2 rounded-lg border flex items-center justify-between gap-2 text-xs font-mono ${ui.cardSubtle}`}
+                            >
+                              <span className={ui.textSecondary}>{metric.label}</span>
+                              <span className={`font-bold ${ui.accentEmerald}`}>
+                                {metric.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <h4
+                          className={`text-xs font-mono font-semibold uppercase tracking-wider ${ui.textMuted}`}
+                        >
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {item.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className={`px-2.5 py-1 rounded border text-xs font-mono ${ui.cardSubtle} ${ui.textPrimary}`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------------
+            04. TECHNICAL STACK & ECOSYSTEM (3+ YEARS PRODUCTION FOCUS)
             ------------------------------------------------------------------- */}
         <section id="stack" className={`pt-12 border-t space-y-6 ${ui.hairline}`}>
           <div className="space-y-1">
             <div className={`text-xs font-mono font-semibold ${ui.accent}`}>
-              03. TECHNICAL STACK
+              04. TECHNICAL STACK
             </div>
             <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${ui.textPrimary}`}>
               Core Data Engineering &amp; Analytics Toolkit
@@ -1790,13 +2182,13 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
         </section>
 
         {/* -------------------------------------------------------------------
-            04. PRODUCTION PROJECTS (3 YEARS EXPERIENCE SCOPE + HOW CREATED)
+            05. PRODUCTION PROJECTS (3 YEARS EXPERIENCE SCOPE + HOW CREATED)
             ------------------------------------------------------------------- */}
         <section id="projects" className={`pt-12 border-t space-y-6 ${ui.hairline}`}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
             <div className="space-y-1">
               <div className={`text-xs font-mono font-semibold ${ui.accent}`}>
-                04. PRODUCTION ARCHITECTURE &amp; ANALYTICS CASE STUDIES
+                05. PRODUCTION ARCHITECTURE &amp; ANALYTICS CASE STUDIES
               </div>
               <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${ui.textPrimary}`}>
                 Selected Data Engineering &amp; Analytics Work (3+ YOE)
@@ -2022,13 +2414,13 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
         </section>
 
         {/* -------------------------------------------------------------------
-            05. WHAT I DO IN DAY-TO-DAY WORK
+            06. WHAT I DO IN DAY-TO-DAY WORK
             ------------------------------------------------------------------- */}
         <section id="day-to-day" className={`pt-12 border-t space-y-6 ${ui.hairline}`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-1">
               <div className={`text-xs font-mono font-semibold ${ui.accent}`}>
-                05. DAY-TO-DAY ENGINEERING WORKFLOW
+                06. DAY-TO-DAY ENGINEERING WORKFLOW
               </div>
               <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${ui.textPrimary}`}>
                 What I Do in Day-to-Day Work
@@ -2067,13 +2459,13 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onNavigate }) => {
         </section>
 
         {/* -------------------------------------------------------------------
-            06. WHAT IS MOST CHALLENGING IN MY ROLE
+            07. WHAT IS MOST CHALLENGING IN MY ROLE
             ------------------------------------------------------------------- */}
         <section id="challenges" className={`pt-12 border-t space-y-6 ${ui.hairline}`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-1">
               <div className={`text-xs font-mono font-semibold ${ui.accent}`}>
-                06. PRODUCTION CHALLENGES &amp; SOLUTIONS
+                07. PRODUCTION CHALLENGES &amp; SOLUTIONS
               </div>
               <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${ui.textPrimary}`}>
                 What Is Most Challenging in Data Engineering &amp; Analytics
